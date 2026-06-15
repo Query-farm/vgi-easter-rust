@@ -1,0 +1,9 @@
+.git
+.github
+target
+ci
+test
+tests
+*.md
+.DS_Store
+fly.toml
