@@ -14,7 +14,11 @@ name = "vgi-easter"
 path = "src/main.rs"
 
 [dependencies]
-vgi = "0.1.0"
+# Pinned to the vgi-rust commit that gates the AF_UNIX transport behind
+# `#[cfg(unix)]` so the crate compiles on Windows. crates.io 0.1.0/0.1.1 do
+# not build on windows-msvc/gnu. Switch back to `vgi = "0.1.2"` once that
+# version is published to crates.io.
+vgi = { git = "https://github.com/Query-farm/vgi-rust", rev = "94fcefd" }
 vgi-rpc = { version = "0.2.0", default-features = false, features = ["macros", "http"] }
 arrow = { version = "58", default-features = false, features = ["ipc"] }
 arrow-array = "58"
